@@ -102,7 +102,7 @@ const char *writeOptionsToPPD(cups_option_t *options, int num_options, const cha
         ppdClose(ppdfile);
     }
 #pragma clang diagnostic pop
-    returnPPD = ppdchanged ? tempfile : file;
+    returnPPD = ppdchanged ? [[NSString stringWithUTF8String:tempfile] UTF8String] : file;
     if (!ppdchanged) {
         unlink(tempfile);
     }
